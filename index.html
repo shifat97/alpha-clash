@@ -13,7 +13,7 @@
 <body class="min-h-screen">
     <main class="min-h-screen">
         <!-- Home Screen -->
-        <section class="min-h-screen flex flex-col items-center justify-center hidden">
+        <section class="min-h-screen flex flex-col items-center justify-center">
             <h1 class="text-[140px] text-white font-bold">ALPHABET CLASH</h1>
             <p class="text-[24px] text-white font-medium">Unleash Your Keyboard Kung Fu : Press “Enter” to Play</p>
             <button
@@ -21,7 +21,7 @@
                 Now</button>
         </section>
         <!-- Playground -->
-        <section class="min-h-screen flex flex-col items-center justify-center gap-16">
+        <section class="min-h-screen flex flex-col items-center justify-center gap-16 hidden">
             <div class="artboard artboard-horizontal phone-6 bg-[#FFFFFFB3] border border-[#2F2941] border-[12px]">
                 <div class="flex flex-col items-center justify-center">
                     <p class="text-white bg-[#2F2941] px-6 pb-3 rounded-bl-md rounded-br-md">Don't watch keyboard while
@@ -66,16 +66,31 @@
                 </div>
             </div>
             <div class="flex items-center justify-between w-4/5">
-                <button class="flex items-center justify-center gap-2 bg-[#894189] px-4 py-2 rounded-full text-white hover:bg-[#010313]">
+                <button
+                    class="flex items-center justify-center gap-2 bg-[#894189] px-4 py-2 rounded-full text-white hover:bg-[#010313]">
                     <p>Life</p>
                     <img src="./images/Group 23.png" alt="">
                     <span>1</span>
                 </button>
-                <button class="flex items-center justify-center gap-2 bg-[#360490] px-4 py-2 rounded-full text-white hover:bg-[#010313]">
+                <button
+                    class="flex items-center justify-center gap-2 bg-[#360490] px-4 py-2 rounded-full text-white hover:bg-[#010313]">
                     <p>Score</p>
                     <img src="./images/Group 23.png" alt="">
                     <span>1</span>
                 </button>
+            </div>
+        </section>
+        <!-- Score Screen -->
+        <section class="min-h-screen flex flex-col items-center justify-center hidden">
+            <div class="custom flex flex-col items-center justify-center">
+                <div class="text-white text-[64px] flex items-center justify-center">
+                    <h1 class="inline font-bold">Score:</h1>
+                    <span class="score text-red-500">14</span>
+                </div>
+                <button
+                    class="bg-white text-xl text-[#010313] px-4 py-2 rounded-md mb-4 hover:bg-[#010313] hover:text-white">Play
+                    Now</button>
+                <p class="text-[20px] text-white">Practice will make you Pro</p>
             </div>
         </section>
     </main>
