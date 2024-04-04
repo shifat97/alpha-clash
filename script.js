@@ -8,35 +8,23 @@ const currentScore = document.getElementById('current-score');
 const currentLife = document.getElementById('current-life');
 const finalScore = document.getElementById('final-score');
 
-function hideHomeScreen() {
-    homeScreen.classList.add('hidden');
+function hideSection(section) {
+    section.classList.add('hidden');
 }
 
-function showPlayground() {
-    playground.classList.remove('hidden');
+function showSection(section) {
+    section.classList.remove('hidden');
 }
 
-function hidePlayground() {
-    playground.classList.add('hidden');
-}
-
-function showScoreScreen() {
-    scoreScreen.classList.remove('hidden');
-}
-
-function hideScoreScreen() {
-    scoreScreen.classList.add('hidden');
-}
-
-function startPlaying() {
-    hideHomeScreen();
-    showPlayground();
+function startFromHomeScreen() {
+    hideSection(homeScreen);
+    showSection(playground);
     continueGame();
 }
 
 function startFromScoreScreen() {
-    hideScoreScreen();
-    showPlayground();
+    hideSection(scoreScreen);
+    showSection(playground);
     continueGame();
 }
 
@@ -44,15 +32,16 @@ function startFromScoreScreen() {
 // Pressing enter will redirect to playground page
 document.addEventListener('keyup', function (event) {
     if (event.key === 'Enter') {
-        startPlaying();
+        startFromHomeScreen();
     }
 })
 
 // Get the random alphabet
+const alphabetList = "abcdefghijklmnopqrstuvwxyz";
+const alphabets = alphabetList.split('');
+
 function randomAlphabet() {
-    const alphabetList = "abcdefghijklmnopqrstuvwxyz";
-    const alphabets = alphabetList.split('');
-    const random = Math.floor(Math.random() * 25);
+    const random = Math.floor(Math.random() * alphabets.length);
     return alphabets[random].toUpperCase();
 }
 
@@ -105,7 +94,6 @@ document.addEventListener('keyup', function (event) {
         const displayedText = getAlphabetText.textContent;
         // addColorToButton(this);
         addColorToButton(key);
-        console.log(event);
         if (displayedText === key.toUpperCase()) {
             updateScore();
         } else {
@@ -153,8 +141,8 @@ scoreButton.addEventListener('click', function () {
         alert('You still have life left');
         return;
     }
-    hidePlayground();
-    showScoreScreen();
+    hideSection(playground);
+    showSection(scoreScreen);
     const getScore = this.querySelector('#current-score').textContent;
     finalScore.textContent = getScore;
 })
