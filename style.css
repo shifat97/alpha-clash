@@ -20,3 +20,8 @@ main {
     border: 1px solid rgba(255, 255, 255, 0.20);
     background: linear-gradient(121deg, rgba(255, 255, 255, 0.56) 0%, rgba(152, 151, 151, 0.00) 102.2%);
 }
+
+.kbd:hover {
+    background-color: white;
+    color: #010313;
+}
