@@ -1,6 +1,7 @@
 const homeScreen = document.getElementById('home-screen');
 const playground = document.getElementById('playground');
 const scoreScreen = document.getElementById('score-screen');
+const keyboardButtons = document.getElementsByClassName('kbd');
 const getAlphabetText = document.querySelector('.artboard span');
 const scoreButton = document.getElementById('score-button');
 const currentScore = document.getElementById('current-score');
@@ -60,12 +61,34 @@ function continueGame() {
     getAlphabetText.textContent = randomAlphabet();
 }
 
+// This function removes the color previous pressed button
+function removeButtonColor() {
+    for (const button of keyboardButtons) {
+        button.classList.remove('bg-orange-400');
+        button.classList.remove('text-black');
+    }
+}
+
+// Add color to button on pressed
+function addColorToButton(button) {
+    removeButtonColor();
+    for (const btn of keyboardButtons) {
+        if (btn.textContent === button) {
+            btn.classList.add('bg-orange-400');
+            btn.classList.add('text-black');
+            return;
+        }
+    }
+    button.classList.add('bg-orange-400');
+    button.classList.add('text-black');
+}
+
 // Add onclick handler on keyboard button
-const keyboardButtons = document.getElementsByClassName('kbd');
 for (const keyboardButton of keyboardButtons) {
     keyboardButton.addEventListener('click', function () {
         const displayedText = getAlphabetText.textContent;
         const keyPressedText = this.textContent.toUpperCase();
+        addColorToButton(this);
         if (displayedText === keyPressedText) {
             updateScore();
         } else {
@@ -80,6 +103,9 @@ document.addEventListener('keyup', function (event) {
     const key = event.key;
     if (key !== 'Enter') {
         const displayedText = getAlphabetText.textContent;
+        // addColorToButton(this);
+        addColorToButton(key);
+        console.log(event);
         if (displayedText === key.toUpperCase()) {
             updateScore();
         } else {
